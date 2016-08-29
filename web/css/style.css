@@ -1,0 +1,156 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.wrapper {
+    background-color: #f7f7f7;
+}
+
+.container {
+    padding: 10px;
+    margin: 0 0 10px;
+}
+
+.curved {
+    border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #666;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #090;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+br.separator {
+    margin: 0;
+    padding: 0;
+    clear: both;
+}
+
+img {
+    border: 0 none;
+    width: 100px;
+    height: 100px;
+}
+
+button {
+    height: 34px;
+    background: #0a0;
+    border-radius: 8px;
+    color: #eee;
+    font-weight: bold;
+}
+
+.input-button {
+    height: 34px;
+    background: #0a0;
+    border-radius: 8px;
+    color: #eee;
+    font-weight: bold;
+}
+
+.reg-table {
+    border: 0;
+    width: 600px;
+
+}
+.reg-table tr{
+    height: 30px;
+}
+
+.reg-input-long {
+    width: 300px;
+    border: 1px solid #999999;
+}
+
+.reg-input-short{
+    width: 146px;
+    border: 1px solid #999999;
+}
+
+
+.navigation {
+    background: #eee url(/images/bg-nav.png) repeat-x top left;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+.navigation span {
+    float: left;
+}
+
+.navigation span a {
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+.navigation span a:link,
+.navigation span a:visited,
+.navigation span a:hover,
+.navigation span a:active {
+    color: #666;
+    text-decoration: none;
+}
+
+.navigation span.nav-right {
+    float: right;
+    margin-right: 0;
+}
+
+.left {
+    position: fixed;
+    width: 20%;
+    float: left;
+    line-height: 3;
+}
+
+.center {
+    margin-left: 22%;
+    margin-right: 22%;
+    min-width: 52%;
+    min-height: calc(100vh - 190px);
+    padding: 20px;
+    float: left;
+    border-left: 4px double #090;
+    border-right: 4px double #090;
+}
+
+.right {
+    right: 1.5%;
+    position: fixed;
+    width: 20%;
+    text-align: center;
+    float: left;
+}
+
+.footer {
+    font-size: 0.9em;
+    text-align: center;
+    padding: 10px;
+    color: #999;
+    background-color: #eee;
+}
+
+.footer a:link,
+.footer a:visited,
+.footer a:hover,
+.footer a:active {
+    color: #666;
+    font-weight: bold;
+}
+
+.copyright {
+    font-size: 10pt;
+    color: #666;
+    text-align: right;
+}
