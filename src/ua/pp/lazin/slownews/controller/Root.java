@@ -13,16 +13,12 @@ import java.io.IOException;
 /**
  * Created by Laz on 24.08.2016.
  */
-@WebServlet("/jhjh")
+@WebServlet("")
 public class Root extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        response.setContentType("text/html; charset=utf-8");
-
         response.sendRedirect("/news");
-
     }
 }

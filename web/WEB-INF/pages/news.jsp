@@ -1,3 +1,9 @@
+<%@ page import="ua.pp.lazin.slownews.controller.Login" %>
+<%@ page import="java.util.List" %>
+<%@ page import="ua.pp.lazin.slownews.model.Storage" %>
+<%@ page import="ua.pp.lazin.slownews.model.User" %>
+<%@ page import="java.io.Writer" %>
+<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: Laz
@@ -12,5 +18,20 @@
 </head>
 <body>
 <p>news page</p>
+<%
+    List<User> users = (List<User>) Storage.getFromMap("t");
+    System.out.println(request.hashCode());
+    for (User user : users) {
+%>
+<div>
+Login is =<%=user.getLogin()%>
+</div>
+<%
+     }
+%>
+<b>Total users:  </b>
+
+
+
 </body>
 </html>

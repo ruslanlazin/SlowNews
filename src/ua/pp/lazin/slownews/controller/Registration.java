@@ -23,14 +23,11 @@ public class Registration extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("text/html; charset=utf-8");
         request.getRequestDispatcher("/WEB-INF/pages/registrationForm.jsp").forward(request, response);
     }
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        response.setContentType("text/html; charset=utf-8");
 
         String login = request.getParameter("Username");
         if (!userStorage.isLoginUnique(login)) {
@@ -52,6 +49,7 @@ public class Registration extends HttpServlet {
         user.setEmail(email);
 
         userStorage.saveUser(user);
+
 
         request.getRequestDispatcher("/WEB-INF/pages/registrationOK.jsp").forward(request, response);
     }
