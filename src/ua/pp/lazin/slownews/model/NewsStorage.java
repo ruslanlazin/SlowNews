@@ -21,7 +21,7 @@ public class NewsStorage {
         return newsList;
     }
 
-    public synchronized void setNewsList(List<NewsItem> newsList) {
+    synchronized void setNewsList(List<NewsItem> newsList) {
         this.newsList = newsList;
     }
 }
