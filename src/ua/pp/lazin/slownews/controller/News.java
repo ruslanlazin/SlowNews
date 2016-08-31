@@ -1,6 +1,4 @@
-
 package ua.pp.lazin.slownews.controller;
-
 
 import ua.pp.lazin.slownews.model.*;
 
@@ -18,7 +16,6 @@ public class News extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
         List<NewsItem> newsList = NewsStorage.getInstance().getNewsList();
 

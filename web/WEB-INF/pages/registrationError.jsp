@@ -20,14 +20,7 @@
     </div>
 
     <div class="left curved container">
-        <p><a href="/news">News</a></p>
-
-        <p><a href="/archive">Archive</a></p>
-
-        <p><a href="/login">Login</a></p>
-
-        <p><a href="/registration">Registration</a></p>
-
+        <%@include file="leftBar.html"%>
     </div>
 
     <div class="center curved container">
@@ -38,15 +31,7 @@
     </div>
 
     <div class="right curved container">
-        <h3>Technologies used in this page:</h3>
-        <img src="/images/java.jpg" alt="JAVA"/>
-        <img src="/images/jsp.png" alt="JSP"/>
-        <img src="/images/html.jpg" alt="HTML"/>
-        <img src="/images/css.jpg" alt="CSS"/>
-        <img src="/images/servlets.jpg" alt="JAVA SERVLETS"/>
-        <img src="/images/js.png" alt="JAVASCRIPT"/>
-        <img src="/images/mvc.png" alt="MVC"/>
-
+        <%@include file="rightBar.html"%>
     </div>
 
     <br class="separator"/>

@@ -29,7 +29,7 @@ a:active {
     font-weight: bold;
 }
 
-br.separator {
+.separator {
     margin: 0;
     padding: 0;
     clear: both;
