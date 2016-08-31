@@ -6,11 +6,11 @@ import java.util.Date;
  * Created by Laz on 30.08.2016.
  */
 public class NewsItem implements Comparable {
-    private String title = "";
-    private String description = "";
-    private String link = "";
-    private String pubDate = "";
-    private String pathToImage = "";
+    private String title;
+    private String description;
+    private String link;
+    private String pubDate;
+    private String pathToImage;
     private Date pubTime;
 
 

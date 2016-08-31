@@ -28,7 +28,7 @@
 
     <div class="center curved container">
         <h1>SlowNews Project
-            <div class="lastUpdated">Slow news from all over the world
+            <div class="h1Appendix">Slow news from all over the world
             </div>
         </h1>
 
@@ -57,7 +57,6 @@
         </div>
 
         <%
-                System.out.println(newsItem.getPubDate());
             }
         %>
 
