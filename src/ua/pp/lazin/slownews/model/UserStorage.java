@@ -3,9 +3,6 @@ package ua.pp.lazin.slownews.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Laz on 29.08.2016.
- */
 public class UserStorage {
     private List<User> users = new ArrayList<User>();
 
