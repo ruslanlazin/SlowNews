@@ -1,5 +1,6 @@
 package ua.pp.lazin.slownews.model;
 
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -10,8 +11,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class RssReader implements Runnable {
 
@@ -19,7 +23,8 @@ public class RssReader implements Runnable {
     public void run() {
 
         final String url = "http://feeds.bbci.co.uk/news/rss.xml";
-        final long halfAnHour = 1_800_000;
+        final long tenMinutes = 600_000;
+        final DateTimeFormatter formatter = DateTimeFormatter.RFC_1123_DATE_TIME;
 
         while (true) {
             try {
@@ -65,9 +70,15 @@ public class RssReader implements Runnable {
                     if (pathToImageElem != null) {
                         newsItem.setPathToImage(pathToImageElem.getAttribute("url"));
                     }
+
+                    LocalDateTime localDateTime = LocalDateTime.parse(newsItem.getPubDate(), formatter);
+
+                    ZonedDateTime zdt = localDateTime.atZone(ZoneId.systemDefault());
+                    newsItem.setPubTime(Date.from(zdt.toInstant()));
+
                     newsList.add(newsItem);
                 }
-
+                Collections.sort(newsList);
                 NewsStorage.getInstance().setNewsList(newsList);
 
             } catch (ParserConfigurationException e) {
@@ -78,7 +89,7 @@ public class RssReader implements Runnable {
                 e.printStackTrace();
             }
             try {
-                Thread.sleep(halfAnHour);
+                Thread.sleep(tenMinutes);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

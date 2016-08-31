@@ -1,14 +1,17 @@
 package ua.pp.lazin.slownews.model;
 
+import java.util.Date;
+
 /**
  * Created by Laz on 30.08.2016.
  */
-public class NewsItem {
+public class NewsItem implements Comparable {
     private String title = "";
     private String description = "";
     private String link = "";
     private String pubDate = "";
     private String pathToImage = "";
+    private Date pubTime;
 
 
     public String getTitle() {
@@ -51,4 +54,17 @@ public class NewsItem {
         this.pubDate = pubDate;
     }
 
+    public Date getPubTime() {
+        return pubTime;
+    }
+
+    public void setPubTime(Date pubTime) {
+        this.pubTime = pubTime;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        NewsItem that = (NewsItem) o;
+        return that.getPubTime().compareTo(this.getPubTime());
+    }
 }
