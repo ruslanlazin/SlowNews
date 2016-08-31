@@ -17,14 +17,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #666;
+    color: #555;
 }
 
 a:link,
 a:visited,
 a:hover,
 a:active {
-    color: #666;
+    color: #555;
     text-decoration: none;
     font-weight: bold;
 }
@@ -45,9 +45,9 @@ button {
 
 .input-button {
     height: 34px;
-    background: #0a0;
+    background: #777;
     border-radius: 8px;
-    color: #eee;
+    color: #fff;
     font-weight: bold;
 }
 
@@ -92,7 +92,7 @@ button {
 .navigation span a:visited,
 .navigation span a:hover,
 .navigation span a:active {
-    color: #666;
+    color: #555;
     text-decoration: none;
 }
 
@@ -119,8 +119,21 @@ button {
     border-right: 4px double #666;
 }
 
-.center img{
-    width: 50%;
+
+
+.newsItem{
+    margin: 20px;
+    padding: 20px;
+}
+
+.newsItem img{
+    width: 100%;
+}
+
+.lastUpdated{
+    font-size: .7em ;
+    font-style: italic;
+    font-weight: normal;
 }
 
 .right {
@@ -148,7 +161,7 @@ button {
 .footer a:visited,
 .footer a:hover,
 .footer a:active {
-    color: #666;
+    color: #555;
     font-weight: bold;
 }
 
