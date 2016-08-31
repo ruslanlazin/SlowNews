@@ -16,11 +16,13 @@
 <div class="curved wrapper">
     <div class="navigation curved container">
         <span class="nav-right"><a href="//lazin.pp.ua">Other projects</a></span>
-        <br class="separator"/>
+
+        <div class="separator">
+        </div>
     </div>
 
     <div class="left curved container">
-        <%@include file="leftBar.html"%>
+        <%@include file="leftBar.html" %>
     </div>
 
     <div class="center curved container">
@@ -31,16 +33,15 @@
     </div>
 
     <div class="right curved container">
-        <%@include file="rightBar.html"%>
+        <%@include file="rightBar.html" %>
     </div>
 
-    <br class="separator"/>
+    <div class="separator">
+    </div>
 
     <div class=" footer curved container">
-        The page source code is available in the <a href="https://github.com/ruslanlazin?tab=repositories">GitHub</a>
-        repository
+        <%@include file="footer.html" %>
     </div>
-
 </div>
 
 <p class="copyright">Copyright &copy;2015-${year}. All Rights Reserved</p>
