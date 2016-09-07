@@ -1,8 +1,6 @@
-<%@ page session="false" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%
-    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
-    request.setAttribute("year", sdf.format(new java.util.Date()));
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,33 +13,28 @@
 <body>
 <div class="curved wrapper">
     <div class="navigation curved container">
-        <span class="nav-right"><a href="//lazin.pp.ua">Other projects</a></span>
-
-        <div class="separator">
-        </div>
+        <c:import url="navBar.jsp"></c:import>
     </div>
+</div>
 
-    <div class="left curved container">
-        <%@include file="leftBar.html" %>
-    </div>
+<div class="left curved container">
+    <c:import url="leftBar.jsp"></c:import>
+</div>
 
-    <div class="center curved container">
-        <h2>Congratulation!</h2>
+<div class="center curved container">
+    <h2>Congratulation!</h2>
 
-        <p>You have successfully registered in this site. But we don't know why.</p>
+    <p>You have successfully registered in this site. Please <a href="signin">Sign in</a></p>
 
-    </div>
+</div>
 
-    <div class="right curved container">
-        <%@include file="rightBar.html" %>
-    </div>
+<div class="right curved container">
+    <c:import url="rightBar.html"></c:import>
+</div>
 
-    <div class="separator">
-    </div>
-
-    <div class=" footer curved container">
-        <%@include file="footer.html" %>
-    </div>
+<div class=" footer curved container">
+    <c:import url="footer.html"></c:import>
+</div>
 </div>
 
 <p class="copyright">Copyright &copy;2015-${year}. All Rights Reserved</p>

@@ -1,4 +1,4 @@
-package ua.pp.lazin.slownews.model;
+package ua.pp.lazin.slownews.integration;
 
 
 import org.w3c.dom.Document;
@@ -6,6 +6,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import ua.pp.lazin.slownews.entity.NewsItem;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -79,7 +80,7 @@ public class RssReader implements Runnable {
                     newsList.add(newsItem);
                 }
                 Collections.sort(newsList);
-                NewsStorage.getInstance().setNewsList(newsList);
+                NewsCache.getInstance().setNewsList(newsList);
 
             } catch (ParserConfigurationException e) {
                 e.printStackTrace();

@@ -1,8 +1,5 @@
-package ua.pp.lazin.slownews.model;
+package ua.pp.lazin.slownews.entity;
 
-/**
- * Created by Laz on 29.08.2016.
- */
 public class User {
     private Long id;
     private String login;

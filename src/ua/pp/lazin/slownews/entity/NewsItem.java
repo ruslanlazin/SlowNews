@@ -1,10 +1,7 @@
-package ua.pp.lazin.slownews.model;
+package ua.pp.lazin.slownews.entity;
 
 import java.util.Date;
 
-/**
- * Created by Laz on 30.08.2016.
- */
 public class NewsItem implements Comparable {
     private String title;
     private String description;

@@ -1,10 +1,8 @@
-<%@ page import="ua.pp.lazin.slownews.model.NewsItem" %>
+<%@ page import="ua.pp.lazin.slownews.entity.NewsItem" %>
 <%@ page import="java.util.List" %>
-<%@ page session="false" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%
-    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
-    request.setAttribute("year", sdf.format(new java.util.Date()));
-%>
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +14,12 @@
 <body>
 <div class="curved wrapper">
     <div class="navigation curved container">
-        <span class="nav-right"><a href="//lazin.pp.ua">Other projects</a></span>
-
-        <div class="separator">
-        </div>
+        <c:import url="navBar.jsp"></c:import>
     </div>
 
     <div class="left curved container">
-        <%@include file="leftBar.html" %>
+        <c:import url="leftBar.jsp"/>
+
     </div>
 
     <div class="center curved container">
@@ -32,49 +28,38 @@
             </div>
         </h1>
 
+        <c:forEach var="newsItem" items="${newsList}">
 
-        <%
-            List<NewsItem> newsList = (List<NewsItem>) request.getAttribute("newsList");
-            for (NewsItem newsItem : newsList) {
-        %>
-        <div>
             <div class="newsItem">
-                <h3><a href=<%=newsItem.getLink()%>><span><%=newsItem.getTitle()%></span></a>
+                <h3><a href="${newsItem.link}"><span>${newsItem.title}</span></a>
+                    <img class="curved favor" src="/images/favorites-add.jpg"
+                         title="add this news to your personal archive">
 
-                    <div class="lastUpdated"><%=newsItem.getPubDate()%>
+                    <div class="lastUpdated">${newsItem.pubDate}
                     </div>
                 </h3>
 
                 <div class="newsItemImage">
-                    <a href=<%=newsItem.getLink()%>><img
-                            src=<%=newsItem.getPathToImage()%>> <a/>
-
+                    <a href=${newsItem.link}><img src=${newsItem.pathToImage}> <a/>
                 </div>
 
-                <div class="newsItemDescription"><%=newsItem.getDescription()%>
+                <div class="newsItemDescription">${newsItem.description}
                 </div>
             </div>
-        </div>
 
-        <%
-            }
-        %>
+        </c:forEach>
 
     </div>
 
     <div class="right curved container">
-        <%@include file="rightBar.html" %>
+        <c:import url="rightBar.html"/>
     </div>
-
-    <div class="separator">
-    </div>
-
     <div class=" footer curved container">
-        <%@include file="footer.html" %>
+        <c:import url="footer.html"/>
     </div>
 </div>
 
-<p class="copyright">Copyright &copy;2015-${year}. All Rights Reserved</p>
+<p class="copyright">Copyright &copy;2015- ${year}. All Rights Reserved</p>
 
 </body>
 

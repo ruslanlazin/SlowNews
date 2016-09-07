@@ -1,4 +1,3 @@
-
 package ua.pp.lazin.slownews.controller;
 
 
@@ -8,23 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
-/**
- * Created by Laz on 24.08.2016.
- */
-@WebServlet("/login")
-public class Login extends HttpServlet {
+@WebServlet("/signout")
+public class SignOut extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.getSession().removeAttribute("user");
 
-        response.setContentType("text/html; charset=utf-8");
-
-        request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-
+        request.getRequestDispatcher("/news").forward(request, response);
     }
+
 }

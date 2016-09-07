@@ -1,8 +1,8 @@
 package ua.pp.lazin.slownews.controller;
 
-import ua.pp.lazin.slownews.model.*;
+import ua.pp.lazin.slownews.integration.NewsCache;
+import ua.pp.lazin.slownews.entity.*;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +14,11 @@ import java.util.List;
 @WebServlet("/news")
 public class News extends HttpServlet {
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<NewsItem> newsList = NewsStorage.getInstance().getNewsList();
+        List<NewsItem> newsList = NewsCache.getInstance().getNewsList();
 
-        request.setAttribute("newsList", newsList);
+        request.getSession().setAttribute("newsList", newsList);
 
         request.getRequestDispatcher("/WEB-INF/pages/news.jsp").forward(request, response);
 

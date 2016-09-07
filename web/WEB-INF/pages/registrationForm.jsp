@@ -1,8 +1,6 @@
-<%@ page session="false" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%
-    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
-    request.setAttribute("year", sdf.format(new java.util.Date()));
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,18 +13,18 @@
 <body>
 <div class="curved wrapper">
     <div class="navigation curved container">
-        <span class="nav-right"><a href="//lazin.pp.ua">Other projects</a></span>
+        <span><a href="//lazin.pp.ua">Other projects</a></span>
 
-        <div class="separator">
-        </div>
     </div>
 
     <div class="left curved container">
-        <%@include file="leftBar.html" %>
+        <c:import url="leftBar.jsp"></c:import>
     </div>
 
     <div class="center curved container">
         <h2>Sign Up</h2>
+
+        <h4>${message}</h4>
 
         <form action="" id="reg-form" method="post">
             <table class="reg-table">
@@ -65,14 +63,11 @@
     </div>
 
     <div class="right curved container">
-        <%@include file="rightBar.html" %>
-    </div>
-
-    <div class="separator">
+        <c:import url="rightBar.html"></c:import>
     </div>
 
     <div class=" footer curved container">
-        <%@include file="footer.html" %>
+        <c:import url="footer.html"></c:import>
     </div>
 </div>
 

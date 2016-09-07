@@ -1,18 +1,20 @@
-package ua.pp.lazin.slownews.model;
+package ua.pp.lazin.slownews.integration;
+
+import ua.pp.lazin.slownews.entity.NewsItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsStorage {
-    private static NewsStorage instance;
+public class NewsCache {
+    private static NewsCache instance;
     private List<NewsItem> newsList = new ArrayList<NewsItem>(50);
 
-    private NewsStorage() {
+    private NewsCache() {
     }
 
-    public static synchronized NewsStorage getInstance() {
+    public static synchronized NewsCache getInstance() {
         if (instance == null) {
-            instance = new NewsStorage();
+            instance = new NewsCache();
         }
         return instance;
     }

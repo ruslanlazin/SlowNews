@@ -1,6 +1,6 @@
 package ua.pp.lazin.slownews.listerner;
 
-import ua.pp.lazin.slownews.model.RssReader;
+import ua.pp.lazin.slownews.integration.RssReader;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -11,7 +11,7 @@ public class SlowNewsServletContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent arg0) {
-        Thread  rssReader = new Thread(new RssReader());
+        Thread rssReader = new Thread(new RssReader());
         rssReader.setDaemon(true);
         rssReader.start();
     }
