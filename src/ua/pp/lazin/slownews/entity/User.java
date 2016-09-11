@@ -1,12 +1,31 @@
 package ua.pp.lazin.slownews.entity;
 
+
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement(name = "user")
+@XmlType(propOrder = {"id", "login", "email", "firstName", "lastName"})
+@XmlAccessorType(value = XmlAccessType.FIELD)
 public class User {
+    @XmlElement
     private Long id;
+
+    @XmlElement
     private String login;
+
+    @XmlTransient
     private String password;
+
+    @XmlElement
     private String email;
+
+    @XmlElement
     private String firstName;
+
+    @XmlElement
     private String lastName;
+
+
 
     public String getEmail() {
         return email;
@@ -54,5 +73,17 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
