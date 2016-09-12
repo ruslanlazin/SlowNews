@@ -1,14 +1,32 @@
 package ua.pp.lazin.slownews.entity;
 
+import javax.xml.bind.annotation.*;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+@XmlRootElement(name = "item")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class NewsItem implements Comparable {
+
+    @XmlElement(name = "title")
     private String title;
+
+    @XmlElement(name = "description")
     private String description;
+
+    @XmlElement(name = "link")
     private String link;
+
+    @XmlElement(name = "pubDate")
     private String pubDate;
-    private String pathToImage;
-    private Date pubTime;
+
+    @XmlElement(name = "thumbnail")
+    private Media media;
+
+    private final DateTimeFormatter formatter = DateTimeFormatter.RFC_1123_DATE_TIME;
 
 
     public String getTitle() {
@@ -36,11 +54,11 @@ public class NewsItem implements Comparable {
     }
 
     public String getPathToImage() {
-        return pathToImage;
+        return media.getUrl();
     }
 
-    public void setPathToImage(String pathToImage) {
-        this.pathToImage = pathToImage;
+    public void setPathToImage(String url) {
+        media.setUrl(url);
     }
 
     public String getPubDate() {
@@ -52,16 +70,30 @@ public class NewsItem implements Comparable {
     }
 
     public Date getPubTime() {
-        return pubTime;
-    }
-
-    public void setPubTime(Date pubTime) {
-        this.pubTime = pubTime;
+        LocalDateTime localDateTime = LocalDateTime.parse(pubDate, formatter);
+        ZonedDateTime zdt = localDateTime.atZone(ZoneId.systemDefault());
+        return (Date.from(zdt.toInstant()));
     }
 
     @Override
     public int compareTo(Object o) {
         NewsItem that = (NewsItem) o;
         return that.getPubTime().compareTo(this.getPubTime());
+    }
+
+    @XmlRootElement(name = "thumbnail")
+    @XmlAccessorType(XmlAccessType.FIELD)
+    private static class Media {
+
+        @XmlAttribute(name = "url")
+        private String url;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
     }
 }

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -26,6 +25,7 @@ public class UsersApi extends HttpServlet {
         Users users = new Users();
         users.setUsers(UserStorage.getInstance().getAllUsers());
         Writer out = response.getWriter();
+        response.setContentType("application/xml");
 
         try {
             JAXBContext context = JAXBContext.newInstance(Users.class);

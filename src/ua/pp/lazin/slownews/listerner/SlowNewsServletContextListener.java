@@ -1,6 +1,7 @@
 package ua.pp.lazin.slownews.listerner;
 
-import ua.pp.lazin.slownews.integration.RssReader;
+import ua.pp.lazin.slownews.integration.JerseyRssReader;
+import ua.pp.lazin.slownews.integration.DomRssReader;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -11,7 +12,9 @@ public class SlowNewsServletContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent arg0) {
-        Thread rssReader = new Thread(new RssReader());
+
+//        Thread rssReader = new Thread(new DomRssReader());      //Use Dom         or
+        Thread rssReader = new Thread(new JerseyRssReader());     //Use Jersey
         rssReader.setDaemon(true);
         rssReader.start();
     }

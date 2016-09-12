@@ -2,6 +2,7 @@ package ua.pp.lazin.slownews.controller;
 
 import ua.pp.lazin.slownews.integration.NewsCache;
 import ua.pp.lazin.slownews.entity.*;
+import ua.pp.lazin.slownews.persistance.Simple;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +20,12 @@ public class News extends HttpServlet {
         List<NewsItem> newsList = NewsCache.getInstance().getNewsList();
 
         request.getSession().setAttribute("newsList", newsList);
+        String[] vas= {"hg","gg"};
+        try {
+            Simple.main(vas);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         request.getRequestDispatcher("/WEB-INF/pages/news.jsp").forward(request, response);
 
