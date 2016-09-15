@@ -3,7 +3,8 @@ package ua.pp.lazin.slownews.controller;
 
 
 import ua.pp.lazin.slownews.entity.User;
-import ua.pp.lazin.slownews.persistance.UserStorage;
+import ua.pp.lazin.slownews.persistance.UserDao;
+import ua.pp.lazin.slownews.persistance.UserDaoList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +20,7 @@ import java.io.IOException;
 @WebServlet("/registration")
 public class Registration extends HttpServlet {
 
-    private UserStorage userStorage = UserStorage.getInstance();
+    private UserDao userDao = UserDaoList.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -30,13 +31,13 @@ public class Registration extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String login = request.getParameter("Username");
-        if (!userStorage.isLoginUnique(login)) {
+        if (!userDao.isLoginUnique(login)) {
             request.setAttribute("message", "User with username " + login + " already exist");
             request.getRequestDispatcher("/WEB-INF/pages/registrationForm.jsp").forward(request, response);
         }
 
         String email = request.getParameter("Email");
-        if (!userStorage.isEmailUnique(email)) {
+        if (!userDao.isEmailUnique(email)) {
             request.setAttribute("message", "User with e-mail " + email + " already exist");
             request.getRequestDispatcher("/WEB-INF/pages/registrationForm.jsp").forward(request, response);
         }
@@ -48,7 +49,7 @@ public class Registration extends HttpServlet {
         user.setLastName(request.getParameter("LastName"));
         user.setEmail(email);
 
-        userStorage.saveUser(user);
+        userDao.saveUser(user);
 
 
         request.getRequestDispatcher("/WEB-INF/pages/registrationOK.jsp").forward(request, response);

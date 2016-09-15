@@ -5,29 +5,32 @@ import ua.pp.lazin.slownews.entity.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserStorage {
+public class UserDaoList implements UserDao {
 
     private List<User> users = new ArrayList<User>();
 
+    @Override
     public List<User> getAllUsers() {
         return users;
     }
 
-    private static UserStorage userStorage;
+    private static UserDao userDao;
 
-    private UserStorage() {
+    private UserDaoList() {
     }
 
-    public static synchronized UserStorage getInstance(){
-        if (userStorage==null){
-            return userStorage = new UserStorage();
-        } else return userStorage;
+    public static synchronized UserDao getInstance(){
+        if (userDao ==null){
+            return userDao = new UserDaoList();
+        } else return userDao;
     }
 
+    @Override
     public void saveUser(User user) {
         users.add(user);
     }
 
+    @Override
     public boolean isLoginUnique(String login) {
         for (User user : users) {
             if (user.getLogin().equals(login)) {
@@ -37,6 +40,7 @@ public class UserStorage {
         return true;
     }
 
+    @Override
     public boolean isEmailUnique(String email) {
         for (User user : users) {
             if (user.getEmail().equals(email)) {
@@ -46,12 +50,14 @@ public class UserStorage {
         return true;
     }
 
-    public User findUserbyLogin(String login) {
+    @Override
+    public User findUserByLogin(String login) {
         for (User user : users) {
             if (user.getLogin().equals(login)) {
-                return user;
+                  return user;
             }
         }
         return null;
     }
+
 }

@@ -21,21 +21,22 @@ public class JerseyRssReader implements Runnable {
         final long tenMinutes = 600_000;
 
         Client c = Client.create();
-
         WebResource resource = c.resource(url);
-        ClientResponse response = resource.accept(MediaType.APPLICATION_ATOM_XML_TYPE).get(ClientResponse.class);
 
-        Rss rss = response.getEntity(new GenericType<Rss>() {
-        });
+        while (true) {
+            ClientResponse response = resource.accept(MediaType.APPLICATION_ATOM_XML_TYPE).get(ClientResponse.class);
+            Rss rss = response.getEntity(new GenericType<Rss>() {
+            });
 
-        List<NewsItem> newsList = rss.getChannel().getNewsItemList();
-        Collections.sort(newsList);
-        NewsCache.getInstance().setNewsList(newsList);
+            List<NewsItem> newsList = rss.getChannel().getNewsItemList();
+            Collections.sort(newsList);
+            NewsCache.getInstance().setNewsList(newsList);
 
-        try {
-            Thread.sleep(tenMinutes);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            try {
+                Thread.sleep(tenMinutes);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

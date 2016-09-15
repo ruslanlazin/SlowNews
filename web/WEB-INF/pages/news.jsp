@@ -28,6 +28,10 @@
             </div>
         </h1>
 
+        <c:if test="${not empty message}">
+            <p>${message}</p>
+        </c:if>
+
         <c:forEach var="newsItem" items="${newsList}">
 
             <div class="newsItem">

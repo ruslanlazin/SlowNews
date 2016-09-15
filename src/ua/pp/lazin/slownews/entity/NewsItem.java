@@ -83,7 +83,7 @@ public class NewsItem implements Comparable {
 
     @XmlRootElement(name = "thumbnail")
     @XmlAccessorType(XmlAccessType.FIELD)
-    private static class Media {
+    public static class Media {
 
         @XmlAttribute(name = "url")
         private String url;

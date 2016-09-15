@@ -3,7 +3,8 @@ package ua.pp.lazin.slownews.controller;
 
 
 import ua.pp.lazin.slownews.entity.User;
-import ua.pp.lazin.slownews.persistance.UserStorage;
+import ua.pp.lazin.slownews.persistance.UserDao;
+import ua.pp.lazin.slownews.persistance.UserDaoList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ import java.io.IOException;
 @WebServlet("/signin")
 public class SignIn extends HttpServlet {
 
-    private UserStorage userStorage = UserStorage.getInstance();
+    private UserDao userDao = UserDaoList.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -26,7 +27,7 @@ public class SignIn extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String username = request.getParameter("Username");
-        User userFromDB = userStorage.findUserbyLogin(username);
+        User userFromDB = userDao.findUserByLogin(username);
 
         if (userFromDB == null) {
             request.setAttribute("message", "User with username <b>" + username + "</b> not found");
@@ -40,7 +41,7 @@ public class SignIn extends HttpServlet {
             return;
         }
 
-        request.getSession().setAttribute("user", username);
+        request.getSession().setAttribute("user", userFromDB);
         response.sendRedirect("/news");
     }
 }

@@ -2,10 +2,10 @@
 
 <Context>
       <Resource name="jdbc/slownews" auth="Container"
-              type="javax.sql.DataSource" maxActive="100"
-              maxIdle="30" maxWait="10000"
+              type="javax.sql.DataSource"
+              maxIdle="30"
               username="postgres"
               password="asdfghjkl"
               driverClassName="org.postgresql.Driver"
-              url="jdbc:postgresql://192.168.3.99/postgres"/>
+              url="jdbc:postgresql://192.168.3.99/slownews"/>
 </Context>

@@ -65,7 +65,7 @@ public class DomRssReader implements Runnable {
 
                     Element pathToImageElem = (Element) xmlNewsItem.getElementsByTagName("media:thumbnail").item(0);
                     if (pathToImageElem != null) {
-                        newsItem.setPathToImage(pathToImageElem.getAttribute("url"));
+                    //    newsItem.setPathToImage(pathToImageElem.getAttribute("url"));
                     }
 
                     newsList.add(newsItem);

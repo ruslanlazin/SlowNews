@@ -2,6 +2,7 @@ package ua.pp.lazin.slownews.entity;
 
 
 import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlRootElement(name = "user")
 @XmlType(propOrder = {"id", "login", "email", "firstName", "lastName"})
@@ -24,6 +25,9 @@ public class User {
 
     @XmlElement
     private String lastName;
+
+    @XmlElement
+    private List<NewsItem> personalNews;
 
 
 
@@ -73,6 +77,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<NewsItem> getPersonalNews() {
+        return personalNews;
+    }
+
+    public void addNewsItem(NewsItem item) {
+        personalNews.add(item);
     }
 
     @Override

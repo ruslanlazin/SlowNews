@@ -1,4 +1,4 @@
-package ua.pp.lazin.slownews.persistance;
+package Test;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -8,10 +8,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class Simple {
+public class TestDbConnection {
 
-    public static void main(String[] args) throws Exception {
-
+    public static void testDBConnection() throws Exception {
 
         Context initContext= new InitialContext();
         DataSource dataSource = (DataSource) initContext.lookup("java:comp/env/jdbc/slownews");
