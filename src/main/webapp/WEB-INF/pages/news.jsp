@@ -42,16 +42,16 @@
                     <c:if test="${!newsItem.favorite}">
                         <img class="curved favor" src="/images/favorites-add.jpg" id="${newsItem.uri}"
                              title="add this news to your personal archive" name="add"
-                             onclick=imgchange(this)>
+                             onclick=changeStatus(this)>
                     </c:if>
 
                     <c:if test="${newsItem.favorite}">
                         <img class="curved favor" src="/images/favorites-remove.jpg" id="${newsItem.uri}"
                              title="remove this news from your personal archive" name="remove"
-                             onclick=imgchange(this)>
+                             onclick=changeStatus(this)>
                     </c:if>
 
-                    <div class="lastUpdated">${newsItem.pubDate}
+                    <div class="lastUpdated"><b>${newsItem.source}</b> - ${newsItem.pubDate}
                     </div>
                 </h3>
 

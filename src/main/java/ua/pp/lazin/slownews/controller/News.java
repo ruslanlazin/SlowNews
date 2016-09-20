@@ -39,8 +39,10 @@ public class News extends HttpServlet {
         request.getSession().setAttribute("newsList", newsList);
 
 
-        System.out.println(newsList.size());
+
         // TODO delete test db from here
+
+//        System.out.println(newsList.size());
         try {
             TestDbConnection.testDBConnection();
         } catch (Exception e) {

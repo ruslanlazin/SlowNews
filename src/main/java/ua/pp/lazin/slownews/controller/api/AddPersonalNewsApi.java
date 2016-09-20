@@ -35,12 +35,12 @@ public class AddPersonalNewsApi extends HttpServlet {
                 newsItem.setFavorite(true);
                 user.getPersonalNews().add(newsItem);
                 response.setStatus(200);
-                response.getWriter().print("This news has been added to your personal archive");
+                response.getWriter().print("The news has been successfully added to your personal archive");
                 return;
             }
         }
         response.setStatus(404);
-        response.getWriter().println("News with URI=" + uri + " has not been found. Please refresh page (F5) and try again");
+        response.getWriter().println("The news with URI=" + uri + " has not been found. Please refresh page (F5) and try again");
     }
 
 }

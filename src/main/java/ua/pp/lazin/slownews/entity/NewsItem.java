@@ -1,11 +1,8 @@
 package ua.pp.lazin.slownews.entity;
 
-import org.eclipse.persistence.oxm.annotations.XmlPath;
-
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Date;
-
 
 @XmlRootElement(name = "item")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -29,7 +26,7 @@ public class NewsItem implements Comparable, Serializable, Cloneable{
     @XmlElement(name = "pubDate")
     private Date pubDate;
 
-    @XmlPath("thumbnail/@url")
+    @XmlElement(name = "pathToImage")
     private String pathToImage = "/images/no_image_available.png";
 
     private boolean favorite;
@@ -89,6 +86,14 @@ public class NewsItem implements Comparable, Serializable, Cloneable{
 
     public void setUri(String uri) {
         this.uri = uri;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     @Override

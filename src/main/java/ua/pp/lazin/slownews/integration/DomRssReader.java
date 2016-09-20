@@ -26,6 +26,7 @@ public class DomRssReader implements Runnable {
     public void run() {
 
         final String url = "http://feeds.bbci.co.uk/news/rss.xml";
+        final String source = "BBC";
         final long tenMinutes = 600000;
 
         while (true) {
@@ -80,6 +81,7 @@ public class DomRssReader implements Runnable {
                         newsItem.setPathToImage(pathToImageElem.getAttribute("url"));
                     }
 
+                    newsItem.setSource(source);
                     newsList.add(newsItem);
                 }
                 Collections.sort(newsList);
@@ -102,7 +104,7 @@ public class DomRssReader implements Runnable {
 
     private Date convertToDate(String pubDate) {
         LocalDateTime localDateTime = LocalDateTime.parse(pubDate, formatter);
-        ZonedDateTime zdt = localDateTime.atZone(ZoneId.systemDefault());
+        ZonedDateTime zdt = localDateTime.atZone(ZoneId.of("UTC"));
         return (Date.from(zdt.toInstant()));
     }
 }

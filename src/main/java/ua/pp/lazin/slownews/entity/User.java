@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name = "user")
-@XmlType(propOrder = {"id", "login", "email", "firstName", "lastName"})
+@XmlType(propOrder = {"id", "login", "email", "firstName", "lastName", "personalNews"})
 @XmlAccessorType(value = XmlAccessType.FIELD)
 public class User {
     @XmlElement

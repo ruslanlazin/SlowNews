@@ -28,7 +28,6 @@ public class Archive extends HttpServlet {
             request.setAttribute("message", "To use personal Archive please Sign in first");
             request.getSession().removeAttribute("newsList");
             request.getRequestDispatcher("/WEB-INF/pages/news.jsp").forward(request, response);
-
             return;
         }
 
@@ -36,8 +35,8 @@ public class Archive extends HttpServlet {
 
         request.getSession().setAttribute("newsList", newsList);
 
-        if (newsList == null) {
-            request.setAttribute("message", "You still haven't got any favorite news");
+        if (newsList == null || newsList.size()==0) {
+            request.setAttribute("message", "You haven't got any favorite news");
         }
         request.getRequestDispatcher("/WEB-INF/pages/news.jsp").forward(request, response);
 

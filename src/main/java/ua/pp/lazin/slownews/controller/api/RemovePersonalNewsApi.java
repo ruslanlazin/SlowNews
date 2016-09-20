@@ -30,12 +30,12 @@ public class RemovePersonalNewsApi extends HttpServlet {
             if (newsItem.getUri().equals(uri)) {
                 user.getPersonalNews().remove(newsItem);
                 response.setStatus(200);
-                response.getWriter().print("This news has been removed to your personal archive");
+                response.getWriter().print("The news has been successfully removed from your personal archive");
                 return;
             }
         }
         response.setStatus(404);
-        response.getWriter().println("News with URI=" + uri + " has not been found. Please refresh page (F5) and try again");
+        response.getWriter().println("The news with URI=" + uri + " has not been found. Please refresh page (F5) and try again");
     }
 
 }
