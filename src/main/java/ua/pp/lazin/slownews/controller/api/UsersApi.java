@@ -24,8 +24,10 @@ public class UsersApi extends HttpServlet {
 
         Users users = new Users();
         users.setUsers(UserDaoList.getInstance().getAllUsers());
+
         Writer out = response.getWriter();
         response.setContentType("application/xml");
+        response.setCharacterEncoding("utf-8");
 
         try {
             JAXBContext context = JAXBContext.newInstance(Users.class);

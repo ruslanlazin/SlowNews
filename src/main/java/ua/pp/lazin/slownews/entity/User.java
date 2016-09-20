@@ -2,13 +2,14 @@ package ua.pp.lazin.slownews.entity;
 
 
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name = "user")
 @XmlType(propOrder = {"id", "login", "email", "firstName", "lastName", "personalNews"})
 @XmlAccessorType(value = XmlAccessType.FIELD)
-public class User {
+public class User implements Serializable{
     @XmlElement
     private Long id;
 
