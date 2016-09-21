@@ -4,6 +4,7 @@ package ua.pp.lazin.slownews.controller;
 
 import ua.pp.lazin.slownews.entity.User;
 import ua.pp.lazin.slownews.persistance.UserDao;
+import ua.pp.lazin.slownews.persistance.UserDaoJdbc;
 import ua.pp.lazin.slownews.persistance.UserDaoList;
 
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import java.io.IOException;
 public class Registration extends HttpServlet {
 
     private UserDao userDao = UserDaoList.getInstance();
+//    private UserDao userDao = UserDaoJdbc.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -34,12 +36,14 @@ public class Registration extends HttpServlet {
         if (!userDao.isLoginUnique(login)) {
             request.setAttribute("message", "User with username " + login + " already exist");
             request.getRequestDispatcher("/WEB-INF/pages/registrationForm.jsp").forward(request, response);
+            return;
         }
 
         String email = request.getParameter("Email");
         if (!userDao.isEmailUnique(email)) {
             request.setAttribute("message", "User with e-mail " + email + " already exist");
             request.getRequestDispatcher("/WEB-INF/pages/registrationForm.jsp").forward(request, response);
+            return;
         }
 
         User user = new User();
@@ -50,7 +54,6 @@ public class Registration extends HttpServlet {
         user.setEmail(email);
 
         userDao.saveUser(user);
-
 
         request.getRequestDispatcher("/WEB-INF/pages/registrationOK.jsp").forward(request, response);
     }

@@ -28,12 +28,17 @@ public class TestMyResource {
 
             Users users = response.readEntity(Users.class);
 
-            StringBuilder builder = new StringBuilder("===== Users =====\n");
+            StringBuilder builder = new StringBuilder
+                    ("======================================= Users =======================================\n");
             for (User user : users.getUsers()) {
-                builder.append("Name: ").append(user.getFirstName()).append(", ")
-                        .append("Login: ").append(user.getLogin()).append("\n");
+                builder.append("Id: ").append(user.getId()).append(", ")
+                        .append("Login: ").append(user.getLogin()).append(", ")
+                        .append("Email: ").append(user.getEmail()).append(", ")
+                        .append("Firstname: ").append(user.getFirstName()).append(", ")
+                        .append("LastName: ").append(user.getLastName())
+                        .append("\n");
             }
-            builder.append("=================");
+            builder.append("=====================================================================================");
             System.out.println(builder.toString());
 
             String xmlString = invocationBuilder.get().readEntity(String.class);

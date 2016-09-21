@@ -7,22 +7,21 @@ import java.util.List;
 
 public class UserDaoList implements UserDao {
 
-    private List<User> users = new ArrayList<User>();
-
-    @Override
-    public List<User> getAllUsers() {
-        return users;
-    }
-
+    private List<User> users = new ArrayList<>();
     private static UserDao userDao;
 
     private UserDaoList() {
     }
 
-    public static synchronized UserDao getInstance(){
-        if (userDao ==null){
+    public static synchronized UserDao getInstance() {
+        if (userDao == null) {
             return userDao = new UserDaoList();
         } else return userDao;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return users;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class UserDaoList implements UserDao {
     public User findUserByLogin(String login) {
         for (User user : users) {
             if (user.getLogin().equals(login)) {
-                  return user;
+                return user;
             }
         }
         return null;

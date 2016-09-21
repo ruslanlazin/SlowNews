@@ -4,6 +4,7 @@ package ua.pp.lazin.slownews.controller;
 
 import ua.pp.lazin.slownews.entity.User;
 import ua.pp.lazin.slownews.persistance.UserDao;
+import ua.pp.lazin.slownews.persistance.UserDaoJdbc;
 import ua.pp.lazin.slownews.persistance.UserDaoList;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class SignIn extends HttpServlet {
 
     private UserDao userDao = UserDaoList.getInstance();
+//    private UserDao userDao = UserDaoJdbc.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

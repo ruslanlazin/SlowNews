@@ -1,6 +1,7 @@
 package ua.pp.lazin.slownews.controller.api;
 
 import ua.pp.lazin.slownews.entity.Users;
+import ua.pp.lazin.slownews.persistance.UserDaoJdbc;
 import ua.pp.lazin.slownews.persistance.UserDaoList;
 
 import javax.servlet.ServletException;
@@ -24,6 +25,7 @@ public class UsersApi extends HttpServlet {
 
         Users users = new Users();
         users.setUsers(UserDaoList.getInstance().getAllUsers());
+//        users.setUsers(UserDaoJdbc.getInstance().getAllUsers());
 
         Writer out = response.getWriter();
         response.setContentType("application/xml");

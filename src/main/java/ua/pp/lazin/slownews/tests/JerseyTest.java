@@ -21,7 +21,6 @@ public class JerseyTest {
 
         final String url = "http://feeds.bbci.co.uk/news/rss.xml";
         //final String url = "http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml";
-        final long tenMinutes = 600000;
 
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(url);
