@@ -46,14 +46,11 @@ public class RomeTest {
         System.out.println(syndFeed.getEntries().get(1).getPublishedDate());
         System.out.println(syndFeed.getTitle());
 
-
-        // parser.printRSSContent(syndFeed);
-
     }
 
     public SyndFeed parseFeed(String url)
 
-            throws IllegalArgumentException, MalformedURLException, FeedException, IOException
+            throws IllegalArgumentException, FeedException, IOException
 
     {
 

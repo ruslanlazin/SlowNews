@@ -41,9 +41,7 @@ public class News extends HttpServlet {
 
 
         // TODO delete test db from here
-
-//        System.out.println(newsList.size());
-        try {
+       try {
             TestDbConnection.testDBConnection();
         } catch (Exception e) {
             e.printStackTrace();

@@ -56,7 +56,7 @@
                 </h3>
 
                 <div class="newsItemImage">
-                    <a href=${newsItem.link}><img src=${newsItem.pathToImage}> </a>
+                    <a href="${newsItem.link}"><img src="${newsItem.pathToImage}"> </a>
                 </div>
 
                 <div class="newsItemDescription">${newsItem.description}

@@ -66,21 +66,22 @@ function changeStatus(obj) {
                     obj.src = '/images/favorites-add.jpg';
                     obj.name = 'add';
                     obj.title = 'add this news to your personal archive';
-                    var s = xmlhttp.responseText;
-                    location.reload(true);
-                    setTimeout (message(s), 100);
-
+                    message(xmlhttp.responseText);
+                    if (window.location.pathname === '/archive') {
+                        var element = document.getElementById(obj.id);
+                        element = element.parentNode.parentNode;
+                        element.parentNode.removeChild(element);
+                    }
+                } else if (xmlhttp.status == 401) { // Сервер вернул код 401 (неавторизован)
+                    warning(xmlhttp.responseText);
+                } else if (xmlhttp.status == 404) { // Сервер вернул код 404 (нет такой новости)
+                    error(xmlhttp.responseText);
                 }
-            } else if (xmlhttp.status == 401) { // Сервер вернул код 401 (неавторизован)
-                warning(xmlhttp.responseText);
-            } else if (xmlhttp.status == 404) { // Сервер вернул код 404 (нет такой новости)
-                error(xmlhttp.responseText);
-
             }
-        };
-
-
-    } else if (obj.name === "add") {
+            ;
+        }
+    }
+    else if (obj.name === "add") {
 
         var xmlhttp = getXmlHttp(); // Создаём объект XMLHTTP
         xmlhttp.open('POST', '/api/addPersonalNews', true); // Открываем асинхронное соединение
