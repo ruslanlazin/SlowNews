@@ -1,5 +1,6 @@
-package ua.pp.lazin.slownews.persistance;
+package ua.pp.lazin.slownews.dao.impl;
 
+import ua.pp.lazin.slownews.dao.UserDao;
 import ua.pp.lazin.slownews.entity.User;
 
 import javax.naming.Context;
@@ -34,7 +35,7 @@ public class UserDaoJdbc implements UserDao {
         } else return userDao;
     }
 
-    @Override
+
     public void saveUser(User user) {
 
         Connection con = null;
@@ -65,7 +66,7 @@ public class UserDaoJdbc implements UserDao {
         }
     }
 
-    @Override
+
     public void updateUser(User user) {
 
     }
@@ -162,7 +163,12 @@ public class UserDaoJdbc implements UserDao {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public void saveOrUpdate(User user) {
+
+    }
+
+    @Override
+    public List<User> getAll() {
         List<User> users = new ArrayList<>();
         Connection con = null;
         try {

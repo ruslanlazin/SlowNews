@@ -1,15 +1,14 @@
-package ua.pp.lazin.slownews.persistance;
+package ua.pp.lazin.slownews.dao;
 
 import ua.pp.lazin.slownews.entity.User;
 
 import java.util.List;
 
 public interface UserDao {
-    List<User> getAllUsers();
 
-    void saveUser(User user);
+    void saveOrUpdate(User user);
 
-    void updateUser(User user);
+    List<User> getAll();
 
     boolean isLoginUnique(String login);
 

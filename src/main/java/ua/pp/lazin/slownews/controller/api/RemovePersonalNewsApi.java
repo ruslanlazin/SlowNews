@@ -2,9 +2,7 @@ package ua.pp.lazin.slownews.controller.api;
 
 import ua.pp.lazin.slownews.entity.NewsItem;
 import ua.pp.lazin.slownews.entity.User;
-import ua.pp.lazin.slownews.persistance.DaoFactory;
-import ua.pp.lazin.slownews.persistance.UserDao;
-import ua.pp.lazin.slownews.persistance.UserDaoList;
+import ua.pp.lazin.slownews.dao.DaoFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +28,7 @@ public class RemovePersonalNewsApi extends HttpServlet {
         for (NewsItem newsItem : newsList) {
             if (newsItem.getUri().equals(uri)) {
                 user.getPersonalNews().remove(newsItem);
-                DaoFactory.getUserDao().updateUser(user);
+                DaoFactory.getUserDao().saveOrUpdate(user);
                 DaoFactory.getNewsDao().remove(newsItem);
                 request.getSession().setAttribute("user", user);
                 response.setStatus(200);

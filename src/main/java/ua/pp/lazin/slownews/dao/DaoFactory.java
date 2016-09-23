@@ -1,4 +1,8 @@
-package ua.pp.lazin.slownews.persistance;
+package ua.pp.lazin.slownews.dao;
+
+import ua.pp.lazin.slownews.dao.impl.NewsDaoHibernate;
+import ua.pp.lazin.slownews.dao.impl.UserDaoHibernate;
+import ua.pp.lazin.slownews.dao.impl.UserDaoJdbc;
 
 public class DaoFactory {
     private static final int storageType = 3;  //  1-List  2-JDBC  3-Hibernate

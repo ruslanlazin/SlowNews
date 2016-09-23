@@ -1,9 +1,7 @@
 package ua.pp.lazin.slownews.controller.api;
 
 import ua.pp.lazin.slownews.entity.Users;
-import ua.pp.lazin.slownews.persistance.DaoFactory;
-import ua.pp.lazin.slownews.persistance.UserDaoJdbc;
-import ua.pp.lazin.slownews.persistance.UserDaoList;
+import ua.pp.lazin.slownews.dao.DaoFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +23,7 @@ public class UsersApi extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Users users = new Users();
-        users.setUsers(DaoFactory.getUserDao().getAllUsers());
+        users.setUsers(DaoFactory.getUserDao().getAll());
 
         Writer out = response.getWriter();
         response.setContentType("application/xml");

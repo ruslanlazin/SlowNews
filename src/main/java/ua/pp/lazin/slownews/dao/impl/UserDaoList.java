@@ -1,5 +1,6 @@
-package ua.pp.lazin.slownews.persistance;
+package ua.pp.lazin.slownews.dao.impl;
 
+import ua.pp.lazin.slownews.dao.UserDao;
 import ua.pp.lazin.slownews.entity.User;
 
 import java.util.ArrayList;
@@ -20,19 +21,15 @@ public class UserDaoList implements UserDao {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return users;
+    public void saveOrUpdate(User user) {
+
     }
 
     @Override
-    public void saveUser(User user) {
-        users.add(user);
+    public List<User> getAll() {
+        return null;
     }
 
-    @Override
-    public void updateUser(User user) {
-
-    }
 
     @Override
     public boolean isLoginUnique(String login) {

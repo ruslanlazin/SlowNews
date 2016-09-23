@@ -3,10 +3,8 @@ package ua.pp.lazin.slownews.controller;
 
 
 import ua.pp.lazin.slownews.entity.User;
-import ua.pp.lazin.slownews.persistance.DaoFactory;
-import ua.pp.lazin.slownews.persistance.UserDao;
-import ua.pp.lazin.slownews.persistance.UserDaoJdbc;
-import ua.pp.lazin.slownews.persistance.UserDaoList;
+import ua.pp.lazin.slownews.dao.DaoFactory;
+import ua.pp.lazin.slownews.dao.UserDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
