@@ -1,6 +1,8 @@
 package ua.pp.lazin.slownews.entity;
 
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,28 +11,35 @@ import java.util.List;
 @XmlRootElement(name = "user")
 @XmlType(propOrder = {"id", "login", "email", "firstName", "lastName", "personalNews"})
 @XmlAccessorType(value = XmlAccessType.FIELD)
-public class User implements Serializable{
-    @XmlElement
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
+
+    @Id
+    @GeneratedValue
     private Long id;
 
-    @XmlElement
+    @NotNull
+    @Column(unique = true, nullable = false)
     private String login;
 
     @XmlTransient
+    @NotNull
+    @Column(unique = true, nullable = false)
     private String password;
 
-    @XmlElement
+    @NotNull
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @XmlElement
+
     private String firstName;
 
-    @XmlElement
+
     private String lastName;
 
-    @XmlElement
+    @ManyToMany
     private List<NewsItem> personalNews = new ArrayList<>();
-
 
 
     public String getEmail() {

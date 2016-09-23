@@ -50,8 +50,8 @@ public class UserDaoJdbc implements UserDao {
             preparedStatement.setString(5, user.getLastName());
             ResultSet rs = preparedStatement.executeQuery();
 
-            while (rs.next()) {
-                System.out.println("User has been created. Id = " + rs.getInt("id"));
+            if (rs.next()) {
+                user.setId(rs.getLong("id"));
             }
             rs.close();
             preparedStatement.close();
@@ -63,6 +63,11 @@ public class UserDaoJdbc implements UserDao {
             } catch (Exception ignore) {
             }
         }
+    }
+
+    @Override
+    public void updateUser(User user) {
+
     }
 
     @Override

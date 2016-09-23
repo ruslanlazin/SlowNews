@@ -3,6 +3,7 @@ package ua.pp.lazin.slownews.controller.api;
 import ua.pp.lazin.slownews.entity.NewsItem;
 import ua.pp.lazin.slownews.entity.User;
 import ua.pp.lazin.slownews.entity.Users;
+import ua.pp.lazin.slownews.persistance.DaoFactory;
 import ua.pp.lazin.slownews.persistance.UserDaoList;
 
 import javax.servlet.ServletException;
@@ -34,6 +35,9 @@ public class AddPersonalNewsApi extends HttpServlet {
             if (newsItem.getUri().equals(uri)) {
                 newsItem.setFavorite(true);
                 user.getPersonalNews().add(newsItem);
+                DaoFactory.getNewsDao().saveNews(newsItem);
+                DaoFactory.getUserDao().updateUser(user);
+                request.getSession().setAttribute("user", user);
                 response.setStatus(200);
                 response.getWriter().print("The news has been successfully added to your personal archive");
                 return;

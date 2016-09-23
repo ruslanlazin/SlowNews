@@ -1,12 +1,22 @@
 package ua.pp.lazin.slownews.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @XmlRootElement(name = "item")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class NewsItem implements Comparable, Serializable, Cloneable{
+@Entity
+@Table(name = "news")
+public class NewsItem implements Comparable, Serializable, Cloneable {
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     @XmlElement(name = "guid")
     private String uri;
@@ -120,13 +130,13 @@ public class NewsItem implements Comparable, Serializable, Cloneable{
     }
 
     @Override
-    public Object clone()  {
+    public Object clone() {
         try {
             return super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
-    return null;
+        return null;
     }
 
 }

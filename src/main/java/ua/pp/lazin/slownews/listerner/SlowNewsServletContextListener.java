@@ -3,6 +3,7 @@ package ua.pp.lazin.slownews.listerner;
 import ua.pp.lazin.slownews.integration.JerseyRssReader;
 import ua.pp.lazin.slownews.integration.DomRssReader;
 import ua.pp.lazin.slownews.integration.RomeRssReader;
+import ua.pp.lazin.slownews.persistance.UserDaoHibernate;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -21,7 +22,8 @@ public class SlowNewsServletContextListener implements ServletContextListener {
     }
 
     @Override
-    public void contextDestroyed(ServletContextEvent arg0) {
+    public void contextDestroyed(ServletContextEvent arg0) {  //todo remove from here
+        UserDaoHibernate.closeEmAndFactory();
     }
 
 

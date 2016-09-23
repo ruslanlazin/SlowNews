@@ -9,6 +9,8 @@ public interface UserDao {
 
     void saveUser(User user);
 
+    void updateUser(User user);
+
     boolean isLoginUnique(String login);
 
     boolean isEmailUnique(String email);

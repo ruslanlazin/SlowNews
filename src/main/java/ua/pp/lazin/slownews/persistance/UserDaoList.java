@@ -30,6 +30,11 @@ public class UserDaoList implements UserDao {
     }
 
     @Override
+    public void updateUser(User user) {
+
+    }
+
+    @Override
     public boolean isLoginUnique(String login) {
         for (User user : users) {
             if (user.getLogin().equals(login)) {
