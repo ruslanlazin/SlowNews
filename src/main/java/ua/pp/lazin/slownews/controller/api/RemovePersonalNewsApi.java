@@ -29,7 +29,7 @@ public class RemovePersonalNewsApi extends HttpServlet {
             if (newsItem.getUri().equals(uri)) {
                 user.getPersonalNews().remove(newsItem);
                 DaoFactory.getUserDao().saveOrUpdate(user);
-                DaoFactory.getNewsDao().remove(newsItem);
+                DaoFactory.getNewsDao().removeIfUnused(newsItem);
                 request.getSession().setAttribute("user", user);
                 response.setStatus(200);
                 response.getWriter().print("The news has been successfully removed from your personal archive");

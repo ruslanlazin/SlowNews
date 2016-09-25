@@ -9,11 +9,15 @@ import java.util.List;
  */
 public interface NewsDao {
 
+    List<NewsItem> getAll();
+
     void saveOrUpdate(NewsItem newsItem);
 
-    List<NewsItem> getAll();
+    void remove(NewsItem newsItem);
 
     NewsItem findNewsByUri(String uri);
 
-    void remove(NewsItem newsItem);
+    NewsItem addIfUnique(NewsItem newsItem);
+
+    void removeIfUnused(NewsItem newsItem);
 }

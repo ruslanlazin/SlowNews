@@ -20,11 +20,8 @@ public class TestMyResource {
             Client client = ClientBuilder.newClient();
             WebTarget target = client.target(url);
 
-
             Invocation.Builder invocationBuilder = target.request(javax.ws.rs.core.MediaType.APPLICATION_XML);
             Response response = invocationBuilder.get();
-
-            //           System.out.println(response.readEntity(String.class));
 
             Users users = response.readEntity(Users.class);
 

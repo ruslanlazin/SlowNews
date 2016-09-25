@@ -28,8 +28,8 @@ public class AddPersonalNewsApi extends HttpServlet {
         for (NewsItem newsItem : newsList) {
             if (newsItem.getUri().equals(uri)) {
                 newsItem.setFavorite(true);
+                newsItem = DaoFactory.getNewsDao().addIfUnique(newsItem);
                 user.getPersonalNews().add(newsItem);
-                DaoFactory.getNewsDao().saveOrUpdate(newsItem);
                 DaoFactory.getUserDao().saveOrUpdate(user);
                 request.getSession().setAttribute("user", user);
                 response.setStatus(200);

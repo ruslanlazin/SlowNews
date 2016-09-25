@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface UserDao {
 
+    List<User> getAll();
+
     void saveOrUpdate(User user);
 
-    List<User> getAll();
+    void remove(User user);
 
     boolean isLoginUnique(String login);
 

@@ -1,9 +1,6 @@
 package ua.pp.lazin.slownews.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -14,20 +11,25 @@ import java.util.Date;
 @Table(name = "news")
 public class NewsItem implements Comparable, Serializable, Cloneable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue
     private Long id;
 
     @XmlElement(name = "guid")
+    @Column(unique = true, nullable = false, length = 1024)
     private String uri;
 
     @XmlElement(name = "source")
+    @Column(length = 1024)
     private String source;
 
     @XmlElement(name = "title")
     private String title;
 
     @XmlElement(name = "description")
+    @Column(length = 2048)
     private String description;
 
     @XmlElement(name = "link")
@@ -37,6 +39,7 @@ public class NewsItem implements Comparable, Serializable, Cloneable {
     private Date pubDate;
 
     @XmlElement(name = "pathToImage")
+    @Column(length = 1024)
     private String pathToImage = "/images/no_image_available.png";
 
     private boolean favorite;
@@ -104,6 +107,14 @@ public class NewsItem implements Comparable, Serializable, Cloneable {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void clearId() {
+        this.id = null;
     }
 
     @Override

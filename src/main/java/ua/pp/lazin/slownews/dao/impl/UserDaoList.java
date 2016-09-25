@@ -26,6 +26,11 @@ public class UserDaoList implements UserDao {
     }
 
     @Override
+    public void remove(User user) {
+
+    }
+
+    @Override
     public List<User> getAll() {
         return null;
     }

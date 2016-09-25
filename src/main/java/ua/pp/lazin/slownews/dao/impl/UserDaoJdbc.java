@@ -168,6 +168,11 @@ public class UserDaoJdbc implements UserDao {
     }
 
     @Override
+    public void remove(User user) {
+
+    }
+
+    @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
         Connection con = null;
