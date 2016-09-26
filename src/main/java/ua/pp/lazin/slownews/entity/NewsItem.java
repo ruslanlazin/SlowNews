@@ -117,6 +117,10 @@ public class NewsItem implements Comparable, Serializable, Cloneable {
         this.id = null;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public int compareTo(Object o) {
         NewsItem that = (NewsItem) o;

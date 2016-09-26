@@ -1,16 +1,14 @@
 package ua.pp.lazin.slownews.dao;
 
-import ua.pp.lazin.slownews.dao.impl.NewsDaoHibernate;
-import ua.pp.lazin.slownews.dao.impl.UserDaoHibernate;
-import ua.pp.lazin.slownews.dao.impl.UserDaoJdbc;
+import ua.pp.lazin.slownews.dao.impl.*;
 
 public class DaoFactory {
-    private static final int storageType = 3;  //  1-List  2-JDBC  3-Hibernate
+    private static final int storageType = 2;  //  1-List  2-JDBC  3-Hibernate
 
     public static UserDao getUserDao() {
 
         if (storageType == 1) {
-            return UserDaoJdbc.getInstance();
+            return UserDaoList.getInstance();
         }
         if (storageType == 2) {
             return UserDaoJdbc.getInstance();
@@ -26,7 +24,7 @@ public class DaoFactory {
             return null;
         }
         if (storageType == 2) {
-            return null;
+            return NewsDaoJdbc.getInstance();
         }
         if (storageType == 3) {
             return new NewsDaoHibernate();

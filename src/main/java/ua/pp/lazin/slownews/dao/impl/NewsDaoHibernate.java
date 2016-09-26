@@ -50,7 +50,7 @@ public class NewsDaoHibernate extends GenericDao<NewsItem> implements NewsDao {
     public void removeIfUnused(NewsItem newsItem) {
 
         em.getTransaction().begin();
-        final String SQL = "SELECT DISTINCT personalNews_id FROM users_news WHERE users_news.personalNews_id = ?";
+        final String SQL = "SELECT personalNews_id FROM users_news WHERE users_news.personalNews_id = ?";
         Query query = em.createNativeQuery(SQL);
         query.setParameter(1, newsItem.getId());
         List<Object> resultList = query.getResultList();

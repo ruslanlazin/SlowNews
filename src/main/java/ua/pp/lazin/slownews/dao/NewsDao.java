@@ -11,7 +11,7 @@ public interface NewsDao {
 
     List<NewsItem> getAll();
 
-    void saveOrUpdate(NewsItem newsItem);
+    //void saveOrUpdate(NewsItem newsItem);
 
     void remove(NewsItem newsItem);
 
