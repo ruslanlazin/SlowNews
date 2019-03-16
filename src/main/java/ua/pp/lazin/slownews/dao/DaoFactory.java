@@ -3,7 +3,7 @@ package ua.pp.lazin.slownews.dao;
 import ua.pp.lazin.slownews.dao.impl.*;
 
 public class DaoFactory {
-    private static final int storageType = 2;  //  1-List  2-JDBC  3-Hibernate
+    private static final int storageType = 1;  //  1-List  2-JDBC  3-Hibernate
 
     public static UserDao getUserDao() {
 

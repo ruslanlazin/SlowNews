@@ -1,10 +1,4 @@
-CREATE TABLE users ( 
-id BIGSERIAL PRIMARY KEY , 
-userlogin VARCHAR(60) UNIQUE NOT NULL, 
-userpassword VARCHAR(60) NOT NULL, 
-email VARCHAR(60) UNIQUE NOT NULL , 
-firstname VARCHAR(60), 
-lastname VARCHAR(60));
+CREATE TABLE users (id BIGSERIAL PRIMARY KEY , userlogin VARCHAR(60) UNIQUE NOT NULL, userpassword VARCHAR(60) NOT NULL, email VARCHAR(60) UNIQUE NOT NULL, firstname VARCHAR(60), lastname VARCHAR(60));
 
 
 
